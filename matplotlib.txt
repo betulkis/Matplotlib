@@ -1,0 +1,1027 @@
+Verileri görselleştirmek 
+
+Çizgi grafiği 
+
+Matlotlib modülünden PI grafiğini içe aktar
+Ve bunu plt olarak içe aktar 
+
+From matlotlib import pyplot as plt 
+
+Şimdi grafiğini çizmek istediğin veriler oluştur
+Önce liste oluştur buna dev_x adını verdik bunlar çizimdeki x ekseninin değerleri olacak
+Yaş aralıkları olacak 
+
+dev_x = [25, 26, 27 ] yaşlar... 
+
+Bir liste ddaha oluştur ve bu da y ekseni değerleri olacak ve maaşlar 
+
+dev_y = [38469, 4200, 46752] 
+
+plt.plot(dev_x , dev_y) 
+
+plt.show() 
+
+Ve basit bir grafik çıkar 
+
+Buna eklemeler yapalım 
+
+Adding label 
+
+Başlık ekleyelim 
+
+plt.xlabel('yaşlar')       # x ekseninin yanında
+plt.ylabel('ortalama maaş')     # y 
+plt.title('yaşa göre ortalama maaş')  
+
+************
+From matlotlib import pyplot as plt 
+
+dev_x = [25, 26, 27 ]
+dev_y = [38469, 4200, 46752] 
+
+plt.plot(dev_x , dev_y) 
+
+plt.xlabel('yaşlar')       
+plt.ylabel('ortalama maaş')     
+plt.title('yaşa göre ortalama maaş')  
+
+plt.show()
+*************
+Yaşa göre ort. Python geliştirici maaşı vs eklemek için yine 2 liste oluşturup
+plt.plot kullanıp  diğer listenin plt komutundan  sonra ekleyebiliriz
+Sonra 2 farklı renkte çizgi grafiği çıkar
+Bunları ayırt etmek için 
+Plot.showdan önce
+İlk yazdığımız verileri önce yazarız 
+
+plt.legend( ['tüm developerlar' , 'python' ] )  **
+  
+Bu yöntem sonradan karışıklığa neden olabilir onun yerine en başta şöyle yazılabilir 
+
+plt.plot(dev_x , dev_y,  label='tüm developerlar')
+****
+From matlotlib import pyplot as plt 
+
+ages_x = [25, 26, 27 ]     *
+dev_y = [38469, 4200, 46752]
+              *
+plt.plot(ages_x , dev_y,  label='tüm developerlar') 
+
+*
+py_dev_y = [45372, 48876, 53850]
+               *
+plt.plot(ages_x , py_dev_y , label ='python') 
+
+plt.xlabel('yaşlar')       
+plt.ylabel('ortalama maaş')     
+plt.title('yaşa göre ortalama maaş')  
+
+plt.legend() 
+
+plt.show() 
+
+*pythondaki yaşlar da genel yaşlarla aynı olduğu için tekrar yazmadan kısa yoldan xleri ortak isimle yazdık 
+
+Grafikte renkler karışmasın diye plt.plot un içine başlıkları da ekledik 
+
+************
+Çizgilerin tipini ve rengi için belirli kodlar var 
+
+k siyah k-- kesikli çizgi ve siyah gibi bunu anlaşılır şöyle yazabiliriz 
+
+plt.plot(ages_x , py_dev_y ,color='k', linestyle='--', label ='python') 
+
+plt.plot(ages_x , py_dev_y , color='b', label ='python')
+Vs vs linestyle eklenmezse varsayılan olur 
+
+Marker ekleme (işaretleyici noktalar oluyor) 
+
+plt.plot(ages_x , py_dev_y , marker='.' label ='python')
+***
+Color='# 444444'  gri
+# Kırmızı yeşil mavi
+İkili olarak Anlamlarına geliyor 
+
+Color='#5a7d9a'   lacivert
+Vs
+*************
+linewidth=3
+Çizgilerin kalınlığı 
+
+plt.plot(ages_x , py_dev_y ,color='#adad3b' , linewidth=3, label ='python')
+
+
+Renk kalınlık başlık marker bunlar plt.plot içindedir
+**************
+Adding padding dolgun 
+
+plt.tight_layout()
+**************
+Grid ızgara ekleme 
+
+plt.grid(True)
+**************
+Matplotlib de kullanabileceğiniz stiller için 
+
+print(plt.style.available)
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ 
+
+plt.style.use('fivethirtyeight')  en başta yazz! 
+
+Izgara renk kalınlık verilerini sil ve sadece bu stili seçtiğinde güzel bir grafik olacak !! 
+
+538 i kullan bu iyi
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ 
+
+plt.style.use('ggplot')   bu da farklı bi grafik stili
+Grimsi arka plan ince çizgiler vs sahip
+******
+Eğlenceli bir Method
+xkcd çizgi roman teknoloji ile ilgili onun stili ile grafik yöntemi 
+
+plt.xkcd() en başta from matplotlibten sonra yaz
+******
+Kaydetmek içinn
+plt.showdan önce 
+
+plt.savefig('plot.png')      ~ dizinde kaydedecek
+
+
+************************************
+2
+************************************
+Çubuk grafikler bar charts
+
+
+bar ve indexes vs  
+
+Bunun için
+plt.plot yerine 
+
+plt.bar yazarız 
+
+
+plt.bar(ages_x , py_dev_y , label ='python') 
+
+İki veri olduğunda 
+Grafik sütunları çakılır bunun olmaması için 
+
+Çubuk grafiklerin yan yana olması için 
+
+Bunun için numpy içe aktar 
+
+Eenn başta  
+
+İmport numpy as np 
+
+Yaşların olduğu x değerlerinin altına 
+X indeksleri adlı değişken oluşturup şunu yaz 
+
+x_indexes = np.arange(len(ages_x))      *!!!!!!!!!! 
+
+...................................................................
+plt.bar içinde ages_x yerine x_indexes yaz
+Width ekle ve 2.çubukta x_indexes + width de yana kaysın
+Genişlik değişkeninin eşit olmasını istediğimiz değer için
+değişkenlere width=width ekle
+
+
+İmport numpy as np
+From matlotlib import pyplot as plt 
+
+ages_x = [25, 26, 27 ]     * 
+
+x_indexes = np.arange(len(ages_x))
+width = 0.25
+    * 
+
+dev_y = [38469, 4200, 46752]
+              *
+plt.bar(x_indexes , dev_y, width=width, label='tüm developerlar') 
+
+*
+py_dev_y = [45372, 48876, 53850]
+               *                  *
+plt.bar(x_indexes + width , py_dev_y ,width=width, label ='python') 
+
+plt.legend() 
+
+plt.xticks(ticks=x_indexes,  labels=ages_x) 
+
+plt.xlabel('yaşlar')       
+plt.ylabel('ortalama maaş')     
+plt.title('yaşa göre ortalama maaş')  
+
+plt.tight_layout() 
+
+plt.show() 
+
+**!!
+Yaşların en altta düzgünce olması için
+plt.xticks(ticks=x_indexes,  labels=ages_x)
+Yazdık 
+
+3 tane çubuk olsaydı ilkine - width ortadakine hiç bir şey ve üçüncüye + width derdik
+***********
+Çok fazla veri olduğunda  CSV 
+Şu ana kadar python betiğindeki verileri kullandık
+Harici kaynaklardan gelen verileri kullanmamız gerekecek
+
+
+import csv    #csv içe aktar
+import numpy as np
+from matplotlib import pyplot as plt 
+
+plt.style.use("fivethirtyeight") 
+
+with open('data.csv') as csv_file:
+      csv_reader = csv. DictReader(csv_file) 
+
+       row = next(csv_reader) 
+
+       print(row['Languages Worked with']) 
+
+Çıktı
+HTML/CSS; Java; JavaScript; Python 
+
+Csv verilerini okumak için csv modülündeki sözlük okuyucu yöntemini kullandık 
+
+csv_reader = csv. DictReader(csv_file) 
+
+Dosyadaki İlk satır
+row = next(csv_reader) 
+
+Sadece print(row) deseydik tüm satırı yazardı 
+
+OrderedDict([('Responder_id', '1'), ('LanguagesWorkedwith', 'HTML/ CSS; Java; JavaScript; Python')]) 
+
+bu yüzden tüm satırı yazdırmak yerine sadece o anahtarı yazdırdık
+
+
+print(row['Languages Worked with']) 
+
+Çıktıdaki ; olmaması için de split kullan 
+
+
+print(row['Languages Worked with'] . split(' ; ' ) )i 
+
+Bu şekilde listee oluşacak
+********** 
+
+Counters sayaçlar
+
+
+Sayaçları collection modülünden içe aktar
+C sayaca eşit olsun ve ona bir liste ver listenin içinde prog dilleri var 
+
+from cellections import Counter
+c = Counter( ['python' , 'javaScript'] ) 
+
+Sayaca bakarsak
+c    enter
+Counter( {' python' : 1 , 'javaScript' : 1 } ) 
+
+Çıktısını verir sayacımız listedeki değerleri ne sıklıkla gördüğünü sayıyor 
+
+Güncelleme yap yeni bir listeye geç 
+
+c.update( [ ' c++' , 'python' ] ) 
+
+c 
+
+Counter( {' python' : 2 , 'javaScript' : 1 , 'c++' : 1} ) 
+
+Python 2 kez oldu .. 
+
+c.update( [ ' c++' , 'python' ] ) 
+Diyerek yeni listeler verip
+c yi yazdırırsak yani en başta kısalttığımız counter i istersek çıktıda verir
+*******
+/////////////////
+import csv    
+import numpy as np
+from collections import counter 
+from matplotlib import pyplot as plt 
+
+plt.style.use("fivethirtyeight") 
+
+with open('data.csv') as csv_file:
+      csv_reader = csv. DictReader(csv_file) 
+
+      language_counter = counter( ) 
+
+       for row in csv_reader:
+             language_counter.update()(row['Languages Worked with'] . split(' ; ' ) ) 
+
+print(language_counter) 
+
+//////////// 
+
+language_counter = counter( )  her satırdan veriyi al say 
+
+Her satır için döngü oluştur 
+Language sayacı güncellemesi yap
+Bu dillerin listesini verecek olan şeyi de ekle row languagesworkedwith....
+
+
+Csv dosyasındaki kişilerin söylediği dillerin listelerini sayaçla saydı çıktıda hangi dil kaç kere var yazar
+Sayaç olduğu için en başta en çok yanıtı sıralar çoktan aza
+Eğer 28 dilden en yaygın 15ini saymak istiyorsak 
+
+print(language_counter.most_common(15))
+!!!!!! 
+
+İlk değer dil
+İkincisi değerler (sayaç)
+Ayrı ayrı yapmak için 
+
+languages = [ ] 
+
+popularity = [ ] 
+
+for item in language_counter.most_common(15): 
+
+       languages.append(item[0]) 
+
+       popularity.append(item[1])
+
+
+Tüm hâli
+
+
+import csv    
+import numpy as np
+from collections import counter 
+from matplotlib import pyplot as plt 
+
+plt.style.use("fivethirtyeight") 
+
+with open('data.csv') as csv_file:
+      csv_reader = csv. DictReader(csv_file) 
+
+      language_counter = counter( ) 
+
+       for row in csv_reader:
+             language_counter.update()(row['Languages Worked with'] . split(' ; ' ) ) 
+
+languages = [ ] 
+
+popularity = [ ] 
+
+for item in language_counter.most_common(15): 
+
+       languages.append(item[0]) 
+
+       popularity.append(item[1]) 
+
+print(languages)
+print (popularity) 
+
+Çıktıda 2 liste olur 
+Aynı x ve y değerleri gibi
+Diller ve sayıları
+
+
+Bunlarla Çubuk grafiği yapmak için
+Print yazmayıp
+Ondan önce
+Languages ve popularity plt bar yap 
+
+plt.bar(languages,popularity) 
+
+Sonrada mnceden öğrendiğin plttitle ylabel yaparsın
+Amaa
+Çok fazla dil olduğundan x kısmında kargaşa olacak üst üste. 
+
+Yatay çubuk grafiği kullan
+h ekle  ** 
+
+plt.barh(languages,popularity) 
+
+Ve bunu yaptığın için x y yerlerini başlık adlarını değiştir! 
+
+plt.barh(languages, popularity) 
+
+plt.title("Most Popular Languages")
+plt.ylabel("Programming Languages")    
+plt.xlabel("Number of People Who Use") 
+
+plt.tight_layout() 
+
+plt.show()
+
+
+
+
+import csv    
+import numpy as np
+from collections import counter 
+from matplotlib import pyplot as plt 
+
+plt.style.use("fivethirtyeight") 
+
+with open('data.csv') as csv_file:
+      csv_reader = csv. DictReader(csv_file) 
+
+      language_counter = counter( ) 
+
+       for row in csv_reader:
+             language_counter.update()(row['Languages Worked with'] . split(' ; ' ) ) 
+
+languages = [ ]
+popularity = [ ] 
+
+for item in language_counter.most_common(15): 
+
+       languages.append(item[0])
+       popularity.append(item[1]) 
+
+language.reverse()
+popularity.reverse()
+# Dersen sütunlar çoktan aza döner 
+
+plt.barh(languages, popularity) 
+
+plt.title("Most Popular Languages")
+#plt.ylabel("Programming Languages") gerek yok
+plt.xlabel("Number of People Who Use") 
+
+plt.tight_layout() 
+
+plt.show()
+
+
+Pip install pandas  komut istemcide
+Pd olarak içe aktar:
+İmport pandas as pd 
+
+Dict okuyucuya gerek kalmaz
+fivethirtyeightten sonrakini sil
+With.open(data ....
+      csv_reader ...kısmı
+Yerine
+Kısaca şunu yaz 
+
+data = pd.read_csv('data.csv') 
+
+Bundan sora yazacağımız parantez içleri de dosyadaki en baştaki bilgiler 
+
+ids = data['Responder_id'] 
+
+lang_responses = data['LanguagesWorkedWith'] 
+
+Row artık yok 
+
+for row in csv_reader: 
+yerine
+for response in lang_responses: 
+
+Ve 
+
+language_counter.update(response.split(' ; ' ) ) 
+
+**************************************
+3
+***************************************
+
+Pie charts pasta grafikler
+5ve 5 ten az veride dilim mantıklı fazlası anlaşılması zor
+--------
+from matplotlib import pyplot as plt
+plt.style.use("fivethirtyeight")
+
+slices = [60, 40]
+
+plt.pie(slices)
+
+plt.title("My Awesome Pie Chart")
+plt.tight_layout()
+plt.show()
+-------
+yüzde 60 ve 40 boyutlu dilimli yuvarlak oluşur ama değer yazı vs yok
+
+slices altına etiket ver
+
+labels = ['sixty' , 'forty' ]
+
+bu etiketleri pasta pie grafiğine ekle
+
+plt.pie(slices, labels=labels)
+
+
+********
+from matplotlib import pyplot as plt
+
+plt.style.use("fivethirtyeight")
+
+slices = [59219, 55466, 47544, 36443, 35917]
+labels = ['JavaScript', 'HTML/CSS', 'SQL', 'Python', 'Java']
+explode = [0, 0, 0, 0.1, 0]
+
+plt.pie(slices, labels=labels, explode=explode, shadow=True,
+        startangle=90, autopct='%1.1f%%',
+        wedgeprops={'edgecolor': 'black'})
+
+plt.title("My Awesome Pie Chart")
+plt.tight_layout()
+plt.show()
+
+**********
+
+siyah kenar:
+
+wedgeprops={'edgecolor': 'black' }
+
+**********
+explode
+patlatma
+
+örn python u belirginleştirmek istiyorsak
+explode listesi oluşturacağız ve 4.sırada olan pythonu patlatmak için
+explode = [0, 0, 0, 0.1, 0]
+bunu yaptıktan sonra
+ply.pie nin içine bunu eklemeyi unutmaa!!
+plt.pie(slices, labels=labels, explode=explode .....
+
+yarıçaptan 0.1 uzakta python daha uzakta vurgulu
+------
+gölgeleme sağlar plt.pie içine yaz
+
+shadow=True
+-----
+başlangıç açısını 90 derece yaparsan döner
+
+startangle=90
+----
+percentages yüzdeler
+
+dilimlerin üstünde yüzde olması için
+
+  autopct='%1.1f%%'
+
+***********************
+4
+*************************
+stack plots
+
+yığılmış alan grafiği
+yığın grafikleri
+
+İlk olarak, matplotlib kütüphanesinden pyplot modülünü içe aktarıyoruz ve bu modülü plt adıyla kullanabileceğimiz şekilde kısaltıyoruz.
+
+from matplotlib import pyplot as plt
+plt.style.use("fivethirtyeight")
+
+
+minutes = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+player1 = [8, 6, 5, 5, 4, 2, 1, 1, 0]
+player2 = [0, 1, 2, 2, 2, 4, 4, 4, 4]
+player3 = [0, 1, 1, 1, 2, 2, 3, 3, 4]
+
+labels = ['player1', 'player2', 'player3']
+colors = ['#6d904f', '#fc4f30', '#008fd5']
+
+plt.stackplot(minutes, player1, player2, player3, labels=labels, colors=colors)
+
+plt.legend(loc=(0.07, 0.05))
+
+plt.title("My Awesome Stack Plot")
+plt.tight_layout()
+plt.show()
+
+# Colors:
+# Blue = #008fd5
+# Red = #fc4f30
+# Yellow = #e5ae37
+# Green = #6d904f
+
+minutes, player1, player2, ve player3 adında dört adet listemiz bulunuyor. 
+minutes listesi, oyunun her bir dakikasını temsil ederken, player1, player2 ve player3 listeleri  sırasıyla üç farklı oyuncunun performansını temsil eder.
+  
+labels ve colors adında iki adet liste daha tanımlıyoruz. labels liste, her bir oyuncuyu temsil eden etiketleri içerirken, 
+colors liste, her bir oyuncunun grafiğinde kullanılacak renk kodlarını içerir.
+
+plt.stackplot fonksiyonunu kullanarak üç oyuncunun performansını gösteren bir yığılmış (stacked) alan grafiği oluşturuyoruz. minutes, player1, player2, ve player3 listelerini sırasıyla argüman olarak veriyoruz. labels ve colors parametreleri ile her bir oyuncunun etiket ve renk bilgilerini ekliyoruz.
+
+plt.legend fonksiyonu ile grafiğin altında bir legen (açıklama) ekliyoruz. loc=(0.07, 0.05) parametresi, legend'in konumunu belirler.
+Örneğin, (0,0) grafiğin sol alt köşesi, (1,1) grafiğin sağ üst köşesi anlamına gelir.
+
+plt.title fonksiyonu ile grafiğe bir başlık ekliyoruz
+
+plt.tight_layout fonksiyonu ile grafiğin düzenini düzeltiyoruz.
+
+plt.show fonksiyonu ile grafiği görüntülüyoruz.
+
+Bu kod parçası, üç oyuncunun performansını dakika dakika gösteren bir yığılmış alan grafiği oluşturur ve grafiğin üzerine etiketler, renkler ve bir başlık ekler. Ayrıca, grafiğin altında her bir oyuncuyu temsil eden renkli kutucuklarla bir açıklama eklenir.
+
+****************************
+5
+****************************
+import pandas as pd
+from matplotlib import pyplot as plt
+
+data = pd.read_csv('data.csv')
+ages = data['Age']
+dev_salaries = data['All_Devs']
+py_salaries = data['Python']
+js_salaries = data['JavaScript']
+
+plt.plot(ages, dev_salaries, color='#444444',
+         linestyle='--', label='All Devs')
+
+plt.plot(ages, py_salaries, label='Python')
+
+# overall_median = 57287
+
+plt.legend()
+
+plt.title('Median Salary (USD) by Age')
+plt.xlabel('Ages')
+plt.ylabel('Median Salary (USD)')
+
+plt.tight_layout()
+
+plt.show()
+
+Bu kod parçası, farklı yaş gruplarındaki yazılım geliştiricilerinin maaşlarını temsil eden çizgi grafiklerini oluşturuyo ve bu grafikte Python ile JavaScript arasındaki maaşları karşılaştırır.
+İlk olarak, pandas kütüphanesini pd kısaltmasıyla içe aktarıyoruz ve matplotlib'i plt kısaltmasıyla içe aktarıyoruz.
+pd.read_csv('data.csv') ifadesi ile 'data.csv' adlı bir CSV dosyasından veri okuyoruz ve bu veriyi bir DataFrame nesnesine atıyoruz. Bu DataFrame  veriyi daha kolay işlememizi sağlayan bir pandas veri yapısı.
+ages, dev_salaries, py_salaries ve js_salaries adlı dört farklı liste oluşturuyoruz. Bu listeler, data DataFrame'inin belirli sütunlarını temsil eder.
+plt.plot fonksiyonu ile üç farklı çizgi grafiği oluşturuyoruz. Her bir çizgi grafiği, belirli bir veri setini temsil eder. color, linestyle ve label parametreleri ile çizgi grafiğinin özelliklerini belirtiyoruz.
+plt.legend() fonksiyonu ile grafiğin sağ üst köşesine bir açıklama (legend) ekliyoruz. Bu, her bir çizgi grafiğinin neyi temsil ettiğini gösterir.
+plt.title, plt.xlabel ve plt.ylabel fonksiyonları ile grafiğe başlık, x-ekseni etiketi ve y-ekseni etiketi ekliyoruz.
+plt.tight_layout() fonksiyonu, grafiği düzenlemek için kullanılır. Bu, özellikle grafiğin üzerindeki başlık ve etiketlerin daha düzenli görünmesini sağlar.
+plt.show() fonksiyonu ile grafiği görüntülüyoruz.
+
+
+
+import pandas as pd
+from matplotlib import pyplot as plt
+
+data = pd.read_csv('data.csv')
+ages = data['Age']
+dev_salaries = data['All_Devs']
+py_salaries = data['Python']
+js_salaries = data['JavaScript']
+
+plt.plot(ages, dev_salaries, color='#444444',
+         linestyle='--', label='All Devs')
+
+plt.plot(ages, py_salaries, label='Python')
+
+#plt.plot fonksiyonu ile iki farklı çizgi grafiği oluşturuyoruz. Birincisi, genel geliştirici maaşlarını temsil eder ('All Devs' olarak etiketlenmiştir). İkincisi, Python geliştiricilerinin maaşlarını temsil eder ('Python' olarak etiketlenmiştir). Her iki çizgi grafiği de ages ve ilgili maaş verileri ile çizilir
+
+
+#plt.fill_between fonksiyonu kullanılarak, Python geliştiricilerinin maaşlarının genel geliştirici maaşlarının üzerinde veya altında olduğu zaman aralıklarını vurgulayan renkli alanlar eklenir. where parametresi, belirli bir koşulun sağlandığı zaman dilimlerini belirtir.
+where=(py_salaries > dev_salaries) ifadesi, Python geliştiricilerinin maaşlarının genel geliştirici maaşlarının üzerinde olduğu durumları belirtir.
+İki plt.fill_between çağrısı, bu iki durumu vurgulayan iki farklı renkte alan ekler.
+
+plt.fill_between(ages, py_salaries, dev_salaries,
+                 where=(py_salaries > dev_salaries),
+                 interpolate=True, alpha=0.25, label='Above Avg')
+
+#plt.fill_between fonksiyonu ile belirli bir aralıkta (x eksenindeki bir aralık) iki çizgi arasını renk ile doldurabiliriz. Bu durumda, plt.fill_between fonksiyonuna eklenen parametreler şu şekildedir:
+
+#interpolate=True: Bu parametre, belirtilen x aralığında y değerlerini doğrusal bir şekilde aralıklar. Yani, iki çizgi arasındaki alanın dolgunluğunu artırır.
+
+#alpha=0.25: Bu parametre, doldurulan alanın şeffaflığını ayarlar. 0 ile 1 arasında bir değer alır. 0, tamamen şeffafken, 1 tamamen opaktır. 0.25 değeri, dolgu renginin %75 şeffaflığında olduğu anlamına gelir.
+
+#label='Above Avg': Bu parametre, doldurulan alanın legend (açıklama) etiketini belirtir. Yani, legend'de bu renkli alanın neyi temsil ettiğini gösteren bir etiket eklenir.
+
+
+plt.fill_between(ages, py_salaries, dev_salaries,
+                 where=(py_salaries <= dev_salaries),
+                 interpolate=True, color='red', alpha=0.25, label='Below Avg')
+
+
+plt.legend()
+
+plt.title('Median Salary (USD) by Age')
+plt.xlabel('Ages')
+plt.ylabel('Median Salary (USD)')
+
+plt.tight_layout()
+
+plt.show()
+
+********************************************
+6
+********************************************
+histogramlar
+
+
+
+import pandas as pd
+from matplotlib import pyplot as plt
+
+plt.style.use('fivethirtyeight')
+
+ages = [18, 19, 21, 25, 26, 26, 30, 32, 38, 45, 55]
+
+# data = pd.read_csv('data.csv')
+# ids = data['Responder_id']
+# ages = data['Age']
+
+# median_age = 29
+# color = '#fc4f30'
+
+# plt.legend()
+
+plt.title('Ages of Respondents')
+plt.xlabel('Ages')
+plt.ylabel('Total Respondents')
+
+plt.tight_layout()
+
+plt.show()
+
+
+--
+import pandas as pd
+from matplotlib import pyplot as plt
+
+plt.style.use('fivethirtyeight')
+
+data = pd.read_csv('data.csv')
+ids = data['Responder_id']
+ages = data['Age']
+
+bins = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+plt.hist(ages, bins=bins, edgecolor='black', log=True)
+
+median_age = 29
+color = '#fc4f30'
+
+plt.axvline(median_age, color=color, label='Age Median', linewidth=2)
+
+plt.legend()
+
+plt.title('Ages of Respondents')
+plt.xlabel('Ages')
+plt.ylabel('Total Respondents')
+
+plt.tight_layout()
+
+plt.show()
+
+
+pd.read_csv('data.csv') ifadesi ile 'data.csv' adlı bir CSV dosyasından veri okuyoruz ve bu veriyi bir DataFrame nesnesine atıyoruz. ids ve ages adında iki farklı liste oluşturuyoruz. ages liste, ankete katılan kişilerin yaşlarını temsil eder.
+
+bins adında bir liste oluşturuyoruz. Bu liste, yaşların hangi aralıklara düşeceğini belirlemek için kullanılır. plt.hist fonksiyonu, bu aralıklara göre yaş dağılımını çizgi grafik olarak gösterir.
+
+plt.hist fonksiyonu ile yaşların dağılımını histogram olarak çiziyoruz. edgecolor='black' parametresi, histogram çizgilerinin kenarlarının siyah olmasını sağlar. log=True parametresi, y-eksenine logaritmik ölçekte değerlerin kullanılmasını ifade eder.
+
+median_age = 29 ve color = '#fc4f30' ifadeleri, yaş medianını ve belirli bir renk kodunu belirten değişkenlerdir.
+
+plt.axvline fonksiyonu ile yaş medianını gösteren bir dikey çizgi eklenir.
+
+***********************
+7
+***********************
+scatter plots dağılım grafikleri
+
+renkli noktalar 
+
+import pandas as pd
+from matplotlib import pyplot as plt
+
+plt.style.use('seaborn')          #plt.style.use('seaborn') ifadesi ile grafikte kullanılacak stilin "seaborn" olarak ayarlanmasını sağlıyoruz. Bu, grafikte belirli bir tasarım ve görünüm sağlayan önceden tanımlanmış bir stil kullanımını ifade eder.
+
+data = pd.read_csv('2019-05-31-data.csv')
+view_count = data['view_count']
+likes = data['likes']
+ratio = data['ratio']              #'2019-05-31-data.csv' adlı bir CSV dosyasından veri okuyoruz ve bu veriyi bir DataFrame nesnesine atıyoruz. view_count, likes, ve ratio adında üç farklı liste oluşturuyoruz. Bu listeler, YouTube videolarının görüntülenme sayıları, beğeni sayıları ve beğeni/dislike oranlarını temsil eder.
+
+plt.scatter(view_count, likes, c=ratio, cmap='summer',
+            edgecolor='black', linewidth=1, alpha=0.75)          #plt.scatter fonksiyonu ile saçılma (scatter) grafiği oluşturuyoruz. Bu grafikte, her bir nokta bir YouTube videosunu temsil eder. c=ratio parametresi, renk skalasını beğeni/dislike oranına göre belirler. cmap='summer' parametresi, kullanılan renk haritasını belirler. edgecolor='black' ve linewidth=1 parametreleri, noktaların kenar rengini ve kalınlığını belirler. alpha=0.75 parametresi, noktaların şeffaflığını belirler.
+
+cbar = plt.colorbar()
+cbar.set_label('Like/Dislike Ratio')         #plt.colorbar() fonksiyonu ile renk skalasını açıklamak için renk çubuğu (colorbar) eklenir. cbar.set_label('Like/Dislike Ratio') ifadesi ile renk çubuğunun üzerine bir etiket eklenir.
+
+plt.xscale('log')
+plt.yscale('log')     #plt.xscale('log') ve plt.yscale('log') ifadeleri ile x ve y eksenlerini logaritmik ölçekte gösteririz. Bu, çok geniş bir aralığa sahip verilerde daha iyi görüntüleme sağlar.
+
+plt.title('Trending YouTube Videos')
+plt.xlabel('View Count')
+plt.ylabel('Total Likes')
+
+plt.tight_layout()
+
+plt.show()
+
+Bu kod parçası, YouTube videolarının görüntülenme sayıları, beğeni sayıları ve beğeni/dislike oranlarını içeren bir veri setini analiz eder ve bu verileri renkli bir saçılma grafiği olarak görselleştirir. Renk, beğeni/dislike oranına göre değişir ve renk çubuğu bu oranın açıklamasını sağlar.
+*************************************
+8
+**************************************
+Zaman serisi verilerinin grafiğini çizme
+plotting time series data 
+
+datetime sınıfını ve timedelta sınıfını içe aktar!!
+
+bir hisse senedi fiyatının belirli tarihlerdeki kapanış fiyatları
+
+import pandas as pd
+from datetime import datetime, timedelta
+from matplotlib import pyplot as plt
+from matplotlib import dates as mpl_dates
+
+plt.style.use('seaborn')     #plt.style.use('seaborn') ifadesi ile grafikte kullanılacak stilin "seaborn" olarak ayarlanmasını sağlıyoruz. Bu, grafikte belirli bir tasarım ve görünüm sağlayan önceden tanımlanmış bir stil kullanımını ifade eder.
+
+dates = [
+    datetime(2019, 5, 24),
+    datetime(2019, 5, 25),
+    datetime(2019, 5, 26),
+    datetime(2019, 5, 27),
+    datetime(2019, 5, 28),
+    datetime(2019, 5, 29),
+    datetime(2019, 5, 30)
+]
+
+y = [0, 1, 3, 4, 6, 5, 7]            #dates ve y adında iki farklı liste oluşturuyoruz. dates liste, zaman serisi verilerini temsil ederken, y liste, her bir tarihe karşılık gelen bir değeri temsil eder.
+
+# data = pd.read_csv('data.csv')
+# price_date = data['Date']
+# price_close = data['Close']
+
+# plt.title('Bitcoin Prices')
+# plt.xlabel('Date')
+# plt.ylabel('Closing Price')
+
+plt.tight_layout()
+
+plt.show()
+
+Bu kod parçası, belirli tarihlerdeki zaman serisi verilerini içeren bir çizgi grafiği oluşturur. Ancak, veri seti bu örnekte doğrudan kullanılmayarak, yorum satırları içinde başka bir kaynaktan veri okuma işlemi etkisizleştirilmiştir. Eğer bir veri seti kullanılıyorsa, bu satırların yorumu kaldırılarak gerçek veri seti ile çalışabilirsin
+---------
+import pandas as pd
+from datetime import datetime, timedelta
+from matplotlib import pyplot as plt
+from matplotlib import dates as mpl_dates
+
+plt.style.use('seaborn')
+
+data = pd.read_csv('data.csv')     #pd.read_csv('data.csv') ifadesi ile 'data.csv' adlı bir CSV dosyasından veri okuyoruz ve bu veriyi bir DataFrame nesnesine atıyoruz. data['Date'] sütununu pd.to_datetime fonksiyonu ile tarih formatına çeviriyoruz ve ardından data DataFrame'ini tarih sütununa göre sıralıyoruz
+
+data['Date'] = pd.to_datetime(data['Date'])     
+data.sort_values('Date', inplace=True)        
+
+price_date = data['Date']
+price_close = data['Close']     #price_date ve price_close adında iki farklı liste oluşturuyoruz. price_date  tarihleri, price_clos kapanış fiyatlarını temsil ediy.
+
+plt.plot_date(price_date, price_close, linestyle='solid')      # zaman serisi verilerini içeren çizgi grafiği oluşturuyoruz. linestyle='solid' parametresi, çizginin sürekli olmasını belirtir.
+
+plt.gcf().autofmt_xdate()       #! plt.gcf().autofmt_xdate() ifadesi ile x-eksenindeki tarih etiketlerini otomatik olarak düzenliyoruz. Bu, tarihlerin daha iyi okunabilir olmasını sağlar.
+
+plt.title('Bitcoin Prices')
+plt.xlabel('Date')
+plt.ylabel('Closing Price')
+
+plt.tight_layout()
+
+plt.show()
+************************************
+9 
+************************************
+plotting live data in real time
+Canlı verileri gerçek zamanlı olarak çizme 
+
+#kullanılacak kütüphaneleri içe aktar. random rastgele sayılar üretmek için, count bir sayacı oluşturmak için, pandas veri işleme için, ve matplotlib grafiği oluşturmak ve güncellemek için kullanılır
+
+import random
+from itertools import count
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+plt.style.use('fivethirtyeight')
+
+x_vals = [ ]
+y_vals = [ ]
+
+index = count()   #boş listeler ve sayaç bu iki liste çizgi grafiğinde kullanılacak x ve y değerlerini saklamak için oluşturulur.
+                           index adlı sayaç, her çağrıldığında bir sonraki indeksi üretecek.
+
+def animate(i):
+    data = pd.read_csv('data.csv')     #animate fonksiyonu, her çağrıldığında CSV dosyasından canlı veri okuyarak çizgi grafiğini günceller.
+    x = data['x_value']             #data['x_value']: 'x_value' adlı sütunu seçer ve bu sütundaki verileri x değişkenine atar.
+    y1 = data['total_1']           #'total_1' adlı sütunu seçer ve bu sütundaki verileri y1 değişkenine atar.
+    y2 = data['total_2']          #Bu işlemler sonucunda, x, y1, ve y2 değişkenleri, CSV dosyasındaki ilgili sütunlardaki verileri içerir. Bu veriler daha sonra çizgi grafiği oluşturmak için matplotlib kütüphanesi kullanılarak kullanılır
+
+    plt.cla()     # önceki çizimleri temizler
+
+    plt.plot(x, y1, label='Channel 1')
+    plt.plot(x, y2, label='Channel 2')   #yeni çizgi grafiğini oluşturur
+
+    plt.legend(loc='upper left')      #Grafiğe bir legend ekler ve konumunu belirler.
+    plt.tight_layout()
+
+
+ani = FuncAnimation(plt.gcf(), animate, interval=1000)   #FuncAnimation sınıfı, animasyonu oluşturur. plt.gcf() mevcut figürü alır ve animate fonksiyonu belirli bir aralıkta çağrılır (milisaniye cinsinden).
+
+plt.tight_layout()
+plt.show()
+
+canlı bir çizgi grafiği oluşturarak zaman içinde değişen verileri görselleştirmek için kullanılır. animate fonksiyonu, her çağrıldığında yeni verileri okuyarak ve grafiği güncelleyerek animasyonu oluşturur. Animasyon, belirli bir aralıkta (interval=1000 - milisaniye cinsinden) çalışır ve sürekli olarak güncellenen bir çizgi grafiği elde edilir.
+
+animasyon adımının eksenin temizlenip tekrar oluşturulma. temiz bir sayfa oluşturur
+
+plt.cla() Kullanmanın Avantajları:
+Daha Temiz Kod: Eksenin her adımda temizlenmesi, kodun daha düzenli ve okunabilir olmasına katkıda bulunabilir.
+
+Daha Pürüzsüz Animasyonlar: Eksenin her seferinde temizlenmesi, animasyonun daha pürüzsüz ve tutarlı görünmesini sağlayabilir.
+diğer yol  Mevcut Çizgileri Güncelleme Avantajları:
+Performans: Yeniden çizim yapmadan doğrudan çizgi objelerini güncellemek, performans açısından daha verimli olabilir. Eksenin sürekli olarak temizlenip tekrar oluşturulması, büyük veri setlerinde performans sorunlarına yol açabilir.
+Geçmiş Durumu Saklama: Eğer animasyon adımları arasında geçmiş durumu (örneğin, önceki çizgileri) korumak önemliyse, mevcut çizgileri güncelleme yöntemi daha uygundur.
+Proje İhtiyaçları: Eğer projeniz sürekli olarak güncellenen büyük veri setleriyle çalışıyorsa ve performans kritik bir faktörse, mevcut çizgileri güncelleme yöntemi tercih edilebilir.
+
+Kod Okunabilirliği: Eğer temiz ve okunabilir bir kod yapısı önemliyse ve animasyonunuz göreceli olarak küçük veya basitse, plt.cla() kullanmak daha uygun olabilir.
+
+
+*************************************
+10
+*************************************
+subplots
+
+fig1, ax1 = plt.subplots() ifadesi, birinci figürü (fig1) ve bu figür içindeki eksenleri (ax1) temsil eden nesneleri oluşturur.
+
+fig2, ax2 = plt.subplots() ifadesi, ikinci figürü (fig2) ve bu figür içindeki eksenleri (ax2) temsil eden nesneleri oluşturur.
+
+Her bir figür, bir pencere veya bir sayfa olarak düşünülebilir ve içinde bir veya daha fazla eksen (grafik) bulunabilir. Eksenler, belirli bir alt grafiği temsil eder.
+Bu şekilde, her iki subplot farklı figür ve eksen nesnelerine sahiptir, böylece ayrı alt grafikleri bağımsız olarak özelleştirebilir ve kontrol edebilirsiniz.
+
+Örneğin, ax1 ve ax2 ile her iki subplot üzerinde farklı çizgi grafikleri çizebilir, farklı etiketler ekleyebilir, başlıklar ve etiketler atayabilir ve her iki alt grafiği aynı anda veya ayrı ayrı görselleştirebilirsiniz. 
+Bu, daha karmaşık grafikler oluştururken daha fazla esneklik sağlar.
+-----
+import pandas as pd
+from matplotlib import pyplot as plt
+
+plt.style.use('seaborn')
+
+data = pd.read_csv('data.csv')  #csv dosyasından veri oku ve dataya ata
+ages = data['Age']
+dev_salaries = data['All_Devs']
+py_salaries = data['Python']    #python maaşları (salaries) vs listeler 
+js_salaries = data['JavaScript']
+
+plt.plot(ages, py_salaries, label='Python')    #çizgi grafiği
+plt.plot(ages, js_salaries, label='JavaScript')
+plt.plot(ages, dev_salaries, color='#444444',
+         linestyle='--', label='All Devs')
+
+plt.legend()
+
+plt.title('Median Salary (USD) by Age')
+plt.xlabel('Ages')
+plt.ylabel('Median Salary (USD)')
+
+plt.tight_layout()
+
+plt.show()
+
+Bu kod parçası, yaşa göre Python, JavaScript ve tüm geliştiricilerin maaşlarını gösteren bir çizgi grafiği oluşturur.
+--------
+
+import pandas as pd
+from matplotlib import pyplot as plt
+
+plt.style.use('seaborn')
+
+data = pd.read_csv('data.csv')
+ages = data['Age']
+dev_salaries = data['All_Devs']
+py_salaries = data['Python']
+js_salaries = data['JavaScript']
+
+fig1, ax1 = plt.subplots()
+fig2, ax2 = plt.subplots()      #plt.subplots() fonksiyonu ile iki farklı subplot oluşturuyoruz. fig1, ax1 ile birinci subplot'u, fig2, ax2 ile ikinci subplot'u temsil eden figür ve eksenleri alıyoruz.
+
+ax1.plot(ages, dev_salaries, color='#444444',
+         linestyle='--', label='All Devs')
+                                                                            #İlk subplot (ax1), tüm geliştiricilerin maaşlarını içeren bir çizgi grafiği oluşturuyor. İkinci subplot (ax2), Python ve JavaScript maaşlarını içeren iki çizgi grafiği oluşturuyor.
+ax2.plot(ages, py_salaries, label='Python')
+ax2.plot(ages, js_salaries, label='JavaScript')
+
+ax1.legend()                                                       # iki ayrı alt grafiği (subplot) içeren bir figürde (figure) yer alan eksenlerin (axes) özelleştirilmesi ve görsel öğeler eklenmesi için kullanılır.
+ax1.set_title('Median Salary (USD) by Age')
+ax1.set_ylabel('Median Salary (USD)')              #ax1.legend() ifadesi, birinci alt grafiğin üzerine bir legend (açıklama) ekler. Legend, her bir çizgi grafiği için hangi veriyi temsil ettiğini belirten etiketleri içerir. Bu ifade, ax1 ile temsil edilen birinci alt grafiğe legend ekler.
+
+ax1.set_title('Median Salary (USD) by Age') ifadesi, birinci alt grafiğin başlığını belirler. Bu durumda, başlık "Median Salary (USD) by Age" olarak ayarlanmıştır. ax1 ile temsil edilen birinci alt grafiğin başlığını belirlemektedir.
+
+ax2.legend()
+ax2.set_xlabel('Ages')
+ax2.set_ylabel('Median Salary (USD)')
+
+plt.tight_layout()
+
+plt.show()
+
+fig1.savefig('fig1.png')
+fig2.savefig('fig2.png')
+
+#fig1.savefig('fig1.png') ve fig2.savefig('fig2.png') ifadeleri ile her iki subplot'u farklı dosyalara kaydediyoruz. Bu, oluşturulan grafiğin görüntüsünü diske kaydetmek için kullanılır.
+Bu kod parçası, iki farklı çizgi grafiği içeren iki subplot'u oluşturur ve her bir subplot'un görüntüsünü ayrı dosyalara kaydeder. Bu, özellikle iki farklı grafiği aynı anda görselleştirmek ve kaydetmek istediğiniz durumlar için kullanışlıdır.
+
+---.
+
