@@ -2,10 +2,7 @@ Verileri görselleştirmek
 
 Çizgi grafiği 
 
-Matlotlib modülünden PI grafiğini içe aktar
-Ve bunu plt olarak içe aktar 
-
-From matlotlib import pyplot as plt 
+From matplotlib import pyplot as plt 
 
 Şimdi grafiğini çizmek istediğin veriler oluştur
 Önce liste oluştur buna dev_x adını verdik bunlar çizimdeki x ekseninin değerleri olacak
